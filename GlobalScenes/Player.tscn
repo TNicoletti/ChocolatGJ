@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Player.gd" type="Script" id=1]
+[ext_resource path="res://Images/topDown_ch_01.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/DetectionLevelActual.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 36.8963, 21.6226 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 29.6407, 36.1574 )
+
+[node name="Player" type="KinematicBody2D"]
+position = Vector2( 508.981, 347.248 )
+collision_mask = 3
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 7, 0 )
+rotation = 1.5708
+scale = Vector2( 5, 5 )
+texture = ExtResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 2 )
+
+[node name="DetectionLevelFixed" type="Label" parent="."]
+margin_left = -133.349
+margin_top = 77.912
+margin_right = -28.3493
+margin_bottom = 91.912
+text = "Detection Level:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DetectionLevelActual" type="Label" parent="."]
+margin_left = -20.2271
+margin_top = 77.912
+margin_right = 19.7729
+margin_bottom = 91.912
+text = "a"
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_Area2D_area_exited"]
