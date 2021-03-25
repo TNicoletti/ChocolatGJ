@@ -1,14 +1,18 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://Images/topDown_ch_01.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/DetectionLevelActual.gd" type="Script" id=3]
+[ext_resource path="res://GlobalScenes/Transform.gd" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 36.8963, 21.6226 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 29.6407, 36.1574 )
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 49.5206
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 508.981, 347.248 )
@@ -24,6 +28,7 @@ position = Vector2( 7, 0 )
 rotation = 1.5708
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
+script = ExtResource( 4 )
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_mask = 3
@@ -51,5 +56,12 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Transform_Area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Transform_Area"]
+shape = SubResource( 3 )
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_Area2D_area_exited"]
+[connection signal="body_entered" from="Transform_Area" to="Sprite" method="_on_Transform_Area_body_entered"]
+[connection signal="body_exited" from="Transform_Area" to="Sprite" method="_on_Transform_Area_body_exited"]

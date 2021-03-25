@@ -4,7 +4,7 @@
 [ext_resource path="res://GlobalScenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Images/Bunny1.png" type="Texture" id=3]
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 139.771, 152.54 )
 
 [node name="World" type="Node2D"]
@@ -22,7 +22,7 @@ rotation = 1.5708
 scale = Vector2( 1, 3.351 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TheGreatBunnyWall"]
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="TheGreatBunnyWall"]
 texture = ExtResource( 3 )
