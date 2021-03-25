@@ -10,7 +10,7 @@ extents = Vector2( 36.8963, 21.6226 )
 extents = Vector2( 29.6407, 36.1574 )
 
 [sub_resource type="CircleShape2D" id=3]
-radius = 100.0
+radius = 320.402
 
 [node name="Enemy" type="KinematicBody2D"]
 position = Vector2( 856.431, 277.758 )

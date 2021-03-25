@@ -1,15 +1,16 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
-[ext_resource path="res://Images/topDown_ch_01.png" type="Texture" id=2]
+[ext_resource path="res://Images/Slime_de_Chocolate.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/DetectionLevelActual.gd" type="Script" id=3]
 [ext_resource path="res://GlobalScenes/Transform.gd" type="Script" id=4]
+[ext_resource path="res://GlobalScenes/Patent_anim.gd" type="Script" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 36.8963, 21.6226 )
+extents = Vector2( 24.752, 42.019 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 29.6407, 36.1574 )
+extents = Vector2( 45.019, 29.248 )
 
 [sub_resource type="CircleShape2D" id=3]
 radius = 49.5206
@@ -24,9 +25,8 @@ rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 7, 0 )
-rotation = 1.5708
-scale = Vector2( 5, 5 )
+position = Vector2( 0, -10 )
+scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 2 )
 script = ExtResource( 4 )
 
@@ -61,6 +61,17 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Transform_Area"]
 shape = SubResource( 3 )
+
+[node name="Patent" type="Label" parent="."]
+margin_left = -25.1984
+margin_top = -62.996
+margin_right = 27.8016
+margin_bottom = -48.996
+text = "Patent:0"
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_Area2D_area_exited"]
 [connection signal="body_entered" from="Transform_Area" to="Sprite" method="_on_Transform_Area_body_entered"]

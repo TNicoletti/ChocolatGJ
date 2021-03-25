@@ -11,6 +11,7 @@ var movespeed = MOVESPEED_N
 var detection_level = 0
 var detected: bool
 
+onready var flip_anim = get_node("Sprite")
 
 func _ready():
 	detected = false
@@ -31,7 +32,8 @@ func _physics_process(delta):
 	motion = motion.normalized()
 	motion = move_and_slide(motion * movespeed)
 	
-	look_at(get_global_mouse_position())
+	#look_at(get_global_mouse_position())
+	flip_to(motion)
 	pass
 	
 	if detected:
@@ -44,20 +46,33 @@ func _physics_process(delta):
 	$DetectionLevelActual.refresh()
 
 
+func flip_to_mouse(mouse_pos):
+	if(mouse_pos.x < position.x):
+		flip_anim.set_flip_h(false)
+	else:
+		flip_anim.set_flip_h(true)
+		
+func flip_to(motion):
+	if(motion.x < 0):
+		flip_anim.set_flip_h(false)
+	elif(motion.x > 0):
+		flip_anim.set_flip_h(true)
+		
+
 func raise_detection():
 	detection_level += DETECTION_INCREASE_FACTOR
-	print(detection_level)
+	#print(detection_level)
 
 
 func _on_Area2D_area_entered(area: Area2D):
-	print("area_entered")
+	#print("area_entered")
 	if area.get_collision_layer_bit(ENEMY_SIGHT_BIT):
-		print("enemy")
+		#print("enemy")
 		detected = true
 
 
 func _on_Area2D_area_exited(area: Area2D):
-	print("area_exited")
+	#print("area_exited")
 	if area.get_collision_layer_bit(ENEMY_SIGHT_BIT):
-		print("enemy")
+		#print("enemy")
 		detected = false
