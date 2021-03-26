@@ -8,6 +8,7 @@ const SPEED_NORMAL = 250
 const SPEED_IDLE = 50
 
 var speed = 250
+var stuck_timer = 30
 
 onready var parent = get_parent()
 onready var player = parent.get_parent().get_node("Player")
@@ -57,9 +58,12 @@ func move_along_path():
 	var start_point = parent.position
 	for i in range(path.size()):
 		var distance_to_next = start_point.distance_to(path[0])
-		if(error_margin <= abs(distance_to_next)):
-			parent.move_and_slide(parent.position.direction_to(path[0]) * speed)
+		if(error_margin <= abs(distance_to_next)) and (stuck_timer > 0):
+			var final_velocity = parent.move_and_slide(parent.position.direction_to(path[0]) * speed)
+			if final_velocity.length() < 1:
+				stuck_timer -= 1
 			return
+		stuck_timer = 30
 		start_point = path[0]
 		path.remove(0)
 		if(path.size() == 0):
