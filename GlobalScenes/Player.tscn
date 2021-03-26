@@ -3,8 +3,8 @@
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://Images/Slime_de_Chocolate.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/DetectionLevelActual.gd" type="Script" id=3]
-[ext_resource path="res://GlobalScenes/Transform.gd" type="Script" id=4]
-[ext_resource path="res://GlobalScenes/Patent_anim.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/Transform.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/Patent_anim.gd" type="Script" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 24.752, 42.019 )
@@ -41,6 +41,7 @@ margin_left = -133.349
 margin_top = 77.912
 margin_right = -28.3493
 margin_bottom = 91.912
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Detection Level:"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -51,6 +52,7 @@ margin_left = -20.2271
 margin_top = 77.912
 margin_right = 19.7729
 margin_bottom = 91.912
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "a"
 script = ExtResource( 3 )
 __meta__ = {
@@ -67,6 +69,7 @@ margin_left = -25.1984
 margin_top = -62.996
 margin_right = 27.8016
 margin_bottom = -48.996
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Patent:0"
 script = ExtResource( 5 )
 __meta__ = {

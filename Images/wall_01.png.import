@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Slime_de_Chocolate.png-fd07809467e81715775ef0c82ca0c1e4.stex"
+path="res://.import/wall_01.png-a38d03e61f4da018af0fffb9c049a965.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Slime_de_Chocolate.png"
-dest_files=[ "res://.import/Slime_de_Chocolate.png-fd07809467e81715775ef0c82ca0c1e4.stex" ]
+source_file="res://Images/wall_01.png"
+dest_files=[ "res://.import/wall_01.png-a38d03e61f4da018af0fffb9c049a965.stex" ]
 
 [params]
 
