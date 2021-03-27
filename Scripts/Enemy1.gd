@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends Node
 
 var patent = 1
 
@@ -8,15 +8,15 @@ const DETECTION_INCREASE_FACTOR = 0.1
 const DETECTION_DECREASE_FACTOR = 0.05
 var detected: bool = false
 
-onready var player_patent = get_node("../Player/Sprite")
+onready var player_patent = get_parent().get_node("../Player/Sprite")
 
-onready var lbl_detection = get_node("Dtl")
+onready var lbl_detection = get_parent().get_node("Dtl")
 
 func _ready():
-	get_node("Patent").refresh(patent)
+	get_parent().get_node("Patent").refresh(patent)
 	pass
 	
-onready var movement_enemy = get_node("Movement_enemy")
+#onready var movement_enemy = get_node("Movement_enemy")
 
 func _process(delta):
 	
@@ -40,10 +40,10 @@ func detection_handle(_delta):
 func _on_Sight_body_entered(body):
 	if("Player" in body.name):
 		detected = true
-	pass # Replace with function body.
+	pass
 
 
 func _on_Sight_body_exited(body):
 	if("Player" in body.name):
 		detected = false
-	pass # Replace with function body.
+	pass

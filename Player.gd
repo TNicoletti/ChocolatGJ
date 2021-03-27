@@ -19,6 +19,7 @@ func _ready():
 	pass
 	
 func _physics_process(delta):
+	#print(global_position)
 	var motion = Vector2()
 	
 	if(Input.is_action_pressed("move_up")):
