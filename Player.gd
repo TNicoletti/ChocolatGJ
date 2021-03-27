@@ -10,6 +10,7 @@ var movespeed = MOVESPEED_N
 
 var detection_level = 0
 var detected: bool
+var rank = 0
 
 onready var flip_anim = get_node("Sprite")
 

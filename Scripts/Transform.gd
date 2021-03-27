@@ -21,6 +21,7 @@ func _process(delta):
 
 func return_normal():
 	patent = 0
+	get_parent().rank = 0
 	#print("New patent: 0")
 	patent_anim.refresh(patent)
 	
@@ -29,6 +30,7 @@ func return_normal():
 
 func transform(body):
 	patent = body.patent
+	get_parent().rank = body.patent
 	#print("New patent: " + str(patent))
 	patent_anim.refresh(patent)
 	

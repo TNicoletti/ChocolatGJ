@@ -1,9 +1,16 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://GlobalScenes/Enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://GlobalScenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://TileMap/Tiles2.tres" type="TileSet" id=3]
 [ext_resource path="res://Images/wall_01.png" type="Texture" id=4]
+[ext_resource path="res://Scripts/Door.gd" type="Script" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 1, 1 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 40, 40 )
 
 [node name="World" type="Node2D"]
 
@@ -36,3 +43,24 @@ smoothing_enabled = true
 position = Vector2( 1362.92, 285.318 )
 
 [node name="Line2D" type="Line2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 200, 400 )
+script = ExtResource( 5 )
+min_rank = 1
+max_rank = 9
+
+[node name="Area2D" type="Area2D" parent="StaticBody2D"]
+scale = Vector2( 60, 60 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/Area2D"]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="StaticBody2D"]
+scale = Vector2( 5, 5 )
+texture = ExtResource( 4 )
+
+[node name="BlockCollision" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource( 2 )
+[connection signal="body_entered" from="StaticBody2D/Area2D" to="StaticBody2D" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="StaticBody2D/Area2D" to="StaticBody2D" method="_on_Area2D_body_exited"]
