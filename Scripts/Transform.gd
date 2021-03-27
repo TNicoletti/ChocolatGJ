@@ -29,8 +29,9 @@ func return_normal():
 	scale = (normal_scale)
 
 func transform(body):
-	patent = body.patent
-	get_parent().rank = body.patent
+	var npatent = body.get_node("Movement_enemy").patent
+	patent = npatent
+	get_parent().rank = npatent
 	#print("New patent: " + str(patent))
 	patent_anim.refresh(patent)
 	
