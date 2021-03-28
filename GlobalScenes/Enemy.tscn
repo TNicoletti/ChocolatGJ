@@ -55,16 +55,18 @@ polygon = PoolVector2Array( 0, 0, 100, 100, 150, 100, 150, -100, 100, -100 )
 
 [node name="Patent" type="Label" parent="."]
 margin_left = -20.1587
-margin_top = -47.877
+margin_top = -70.5692
 margin_right = 19.8413
-margin_bottom = -33.877
+margin_bottom = -56.5692
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+align = 1
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Dtl" type="Label" parent="."]
+visible = false
 margin_left = -18.0
 margin_top = 40.0
 margin_right = 22.0

@@ -10,6 +10,8 @@ onready var patent_anim = get_parent().get_node("Patent")
 
 onready var normal_scale = transform.get_scale()
 
+onready var transform_unsafe = get_node("../Transform_unsafe")
+
 func _process(delta):
 	if(Input.is_action_just_pressed("Transform") && enemys_range.size() > 0):
 		for i in range(enemys_range.size()):
@@ -32,6 +34,10 @@ func return_normal():
 	scale = (normal_scale)
 
 func transform(body):
+	if(transform_unsafe.enemies_in_area > 1):
+		#print(transform_unsafe.enemies_in_area)
+		get_tree().reload_current_scene()
+	
 	var npatent = body.get_node("Movement_enemy").patent
 	patent = npatent
 	get_parent().rank = npatent

@@ -34,7 +34,7 @@ func detection_handle(_delta):
 	if(detected):
 		var v = rc2D.global_position.direction_to(player_patent.global_position).normalized() * 300
 		if(flipped.fliped):
-			v = -v
+			v.x = -v.x
 		rc2D.cast_to = v
 		if(!rc2D.is_colliding() || !("Player" in rc2D.get_collider().name)):
 			dt = false
@@ -47,7 +47,7 @@ func detection_handle(_delta):
 		detection_level -= DETECTION_DECREASE_FACTOR
 	detection_level = clamp(detection_level, 0, 100)
 	
-	if(detection_level >= 50):
+	if(detection_level >= 20):
 		#movement_enemy.state = 1
 		get_tree().reload_current_scene()
 	
