@@ -1,6 +1,7 @@
 extends Node
 
-var patent = 1
+export var patent = 1
+export var transformable: bool = true
 
 var detection_level = 0
 
@@ -31,7 +32,7 @@ func _process(delta):
 func detection_handle(_delta):
 	var dt = detected
 	if(detected):
-		var v = rc2D.global_position.direction_to(player_patent.global_position).normalized() * 150
+		var v = rc2D.global_position.direction_to(player_patent.global_position).normalized() * 300
 		if(flipped.fliped):
 			v = -v
 		rc2D.cast_to = v

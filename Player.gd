@@ -55,9 +55,9 @@ func flip_to_mouse(mouse_pos):
 		flip_anim.set_flip_h(true)
 		
 func flip_to(motion):
-	if(motion.x < 0):
+	if(motion.x > 0):
 		flip_anim.set_flip_h(false)
-	elif(motion.x > 0):
+	elif(motion.x < 0):
 		flip_anim.set_flip_h(true)
 		
 

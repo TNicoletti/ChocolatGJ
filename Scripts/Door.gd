@@ -21,6 +21,7 @@ func _on_Area2D_body_entered(body):
 	if("Player" in body.name):
 		if(body.rank >= min_rank) and (body.rank <= max_rank):
 			$BlockCollision.set_deferred("disabled", true)
+			
 	pass # Replace with function body.
 
 

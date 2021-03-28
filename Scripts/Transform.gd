@@ -12,8 +12,11 @@ onready var normal_scale = transform.get_scale()
 
 func _process(delta):
 	if(Input.is_action_just_pressed("Transform") && enemys_range.size() > 0):
-		transform(enemys_range[0])
-		enemys_range.remove(0)
+		for i in range(enemys_range.size()):
+			if(enemys_range[i].get_node("Movement_enemy").transformable):
+				transform(enemys_range[i])
+				enemys_range.remove(i)
+				break
 		#sprite.set_texture(pt1);
 	elif((Input.is_action_just_pressed("Transform") || Input.is_action_just_pressed("Return_normal")) && patent != 0):
 		return_normal()

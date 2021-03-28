@@ -1,8 +1,8 @@
 extends KinematicBody2D
 
-enum {IDLE, PURSUIT}
+enum {IDLE, PURSUIT, STOP}
 
-var state = IDLE
+export var state = IDLE
 
 const SPEED_NORMAL = 250
 const SPEED_IDLE = 100
@@ -89,8 +89,8 @@ func idle_move():
 		
 		var new_path: = nav2d.get_simple_path(position, pos, false)
 		
-		if(new_path[new_path.size() - 1] != pos):
-			continue
+		if(new_path.size() == 0 || new_path[new_path.size() - 1] != pos):
+			return
 		
 		testpath.points = new_path
 		path = new_path
